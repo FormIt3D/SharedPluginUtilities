@@ -185,7 +185,7 @@ FormItInterface.Initialize = function(callbackMethod)
                         var msgHandlers = FormItInterface.MessageHandlers[jsonMessage.msg];
                         if (!!msgHandlers)
                         {
-                            msgHandlers.forEach((handler) => handler(event.data));
+                            msgHandlers.forEach((handler) => handler(jsonMessage.payload));
                         }
                     });
                     postRobot.FormItPluginMsgEventInitialized = true;
