@@ -954,6 +954,45 @@ FormIt.PluginUI.CheckboxModule = class CheckboxModule {
     }
 }
 
+// typical radio button input
+FormIt.PluginUI.RadioButtonModule = class RadioButtonModule {
+    constructor(labelText, radioButtonName) {
+       
+        // initialize the arguments
+        this.labelText = labelText;
+        this.radioButtonName = radioButtonName;
+
+        // build
+        this.element = this.build();
+    }
+
+    // construct and append the UI elements
+    build() {
+
+        // build the container
+        let container = document.createElement('div');
+        container.className = 'multiModuleContainer';
+
+        // create the checkbox
+        this.input = document.createElement('input');
+        this.input.setAttribute("type", "radio");
+        this.input.setAttribute("name", this.radioButtonname);
+        container.appendChild(this.input);
+
+        // create the label
+        let checkboxLabel = document.createElement('div');
+        checkboxLabel.className = 'inputLabel';
+        checkboxLabel.innerHTML = this.labelText;
+        container.appendChild(checkboxLabel);
+
+        return container;
+    }
+
+    getInput() {
+        return this.input;
+    }
+}
+
 // info card message
 // used when the selection doesn't meet the specified criteria
 FormIt.PluginUI.MessageInfoCard = class MessageInfoCard {
