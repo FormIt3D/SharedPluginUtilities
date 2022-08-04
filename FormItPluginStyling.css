@@ -367,6 +367,12 @@ option:hover {
     margin-bottom: 10px;
 }
 
+/* used for the last input module */
+.inputModuleContainerBottom {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
 /* used when the input module is not part of a layout with other input modules */
 .inputModuleContainerStandalone {
     margin-bottom: 0px;

@@ -705,6 +705,59 @@ FormIt.PluginUI.TextInputModule = class TextInputModule extends FormIt.PluginUI.
     }
 }
 
+// typical text/dimension input and a label - no button
+// v2 eliminates arguments and adds optional methods to get the container and input
+FormIt.PluginUI.TextInputModuleV2 = class TextInputModule extends FormIt.PluginUI.AlphaNumericInput {
+    constructor(moduleLabelText, submitTextFunction) {
+        
+        // call the super function
+        super();
+
+        // initialize the arguments
+        this.moduleLabelText = moduleLabelText;
+        this.submitTextFunction = submitTextFunction;
+
+        // build and attach events
+        this.element = this.build();
+        this.attachEvents();
+    }
+
+    // construct and append the UI elements
+    build() {
+        
+        // create the container
+        let container = document.createElement('form');
+
+        // create the label
+        this.textInputLabel = document.createElement('div');
+        this.textInputLabel.className = 'inputLabel';
+        this.textInputLabel.innerHTML = this.moduleLabelText;
+        container.appendChild(this.textInputLabel);
+
+        // create the input
+        this.input = document.createElement('input');
+        this.input.setAttribute("type", "text");
+        container.appendChild(this.input);
+
+        return container;
+    }
+
+    // get the input for get/set value operations
+    getInput() {
+        return this.input;
+    }
+
+    // get the label 
+    getLabel() {
+        return this.textInputLabel;
+    }
+
+    // set the label
+    setLabel(newLabelText) {
+        this.textInputLabel.innerHTML = newLabelText;
+    }
+}
+
 // typical multi-line text input - no button
 FormIt.PluginUI.TextAreaInputModule = class TextAreaInputModule extends FormIt.PluginUI.AlphaNumericInput {
     constructor(moduleLabelText, submitTextFunction) {
